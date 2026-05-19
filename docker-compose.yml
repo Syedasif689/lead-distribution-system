@@ -1,0 +1,15 @@
+services:
+  postgres:
+    image: postgres:16
+    container_name: prowider-postgres
+    environment:
+      POSTGRES_DB: prowider
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - prowider-postgres:/var/lib/postgresql/data
+
+volumes:
+  prowider-postgres:
