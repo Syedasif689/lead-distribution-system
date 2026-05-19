@@ -4,21 +4,23 @@ server:
 spring:
   application:
     name: prowider-backend
+
   datasource:
-    url: ${DATABASE_URL:jdbc:postgresql://localhost:5432/prowider}
-    username: ${DATABASE_USERNAME:postgres}
-    password: ${DATABASE_PASSWORD:postgres}
+    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/prowider}
+    username: ${SPRING_DATASOURCE_USERNAME:postgres}
+    password: ${SPRING_DATASOURCE_PASSWORD:postgres}
+
   jpa:
     hibernate:
-      ddl-auto: validate
+      ddl-auto: update
     open-in-view: false
     properties:
       hibernate:
         format_sql: true
         jdbc.time_zone: UTC
+
   flyway:
-    enabled: true
-    locations: classpath:db/migration
+    enabled: false
 
 app:
   cors:
