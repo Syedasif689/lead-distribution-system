@@ -1,14 +1,14 @@
-@package com.project.service;
-
-import com.project.dto.CreateLeadRequest;
-import com.project.dto.GenerateLeadsResponse;
-import com.project.dto.LeadResponse;
-import com.project.entity.ServiceType;
+package com.project.service;
 
 import java.util.List;
 import java.util.UUID;
 
 import org.springframework.stereotype.Service;
+
+import com.project.dto.CreateLeadRequest;
+import com.project.dto.GenerateLeadsResponse;
+import com.project.dto.LeadResponse;
+import com.project.entity.ServiceType;
 
 @Service
 public class TestService {
