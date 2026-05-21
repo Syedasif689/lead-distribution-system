@@ -13,11 +13,11 @@ public class ProwiderApplication {
     }
 
     private static void applyDatabaseUrl() {
-        if (System.getenv("SPRING_DATASOURCE_URL") != null || System.getProperty("spring.datasource.url") != null) {
+        if (System.getProperty("spring.datasource.url") != null) {
             return;
         }
 
-        for (Map.Entry<String, Object> entry : DatabaseUrlProperties.from(System.getenv("DATABASE_URL")).entrySet()) {
+        for (Map.Entry<String, Object> entry : DatabaseUrlProperties.fromEnv(System::getenv).entrySet()) {
             System.setProperty(entry.getKey(), entry.getValue().toString());
         }
     }

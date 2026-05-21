@@ -5,9 +5,29 @@ import java.net.URLDecoder;
 import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.function.Function;
 
 public final class DatabaseUrlProperties {
+    private static final String[] DATABASE_URL_KEYS = {
+        "SPRING_DATASOURCE_URL",
+        "DATABASE_URL",
+        "JDBC_DATABASE_URL",
+        "POSTGRES_URL",
+        "DATABASE_PRIVATE_URL"
+    };
+
     private DatabaseUrlProperties() {
+    }
+
+    public static Map<String, Object> fromEnv(Function<String, String> environment) {
+        for (String key : DATABASE_URL_KEYS) {
+            Map<String, Object> properties = from(environment.apply(key));
+            if (!properties.isEmpty()) {
+                return properties;
+            }
+        }
+
+        return Map.of();
     }
 
     public static Map<String, Object> from(String databaseUrl) {

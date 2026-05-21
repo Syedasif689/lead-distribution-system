@@ -75,6 +75,7 @@ Backend on Render:
 - Build command: `cd backend && mvn clean package -DskipTests`
 - Start command: `java -jar backend/target/prowider-backend-0.0.1-SNAPSHOT.jar`
 - Set `DATABASE_URL` to your Render/Postgres internal database URL. Both `postgres://user:password@host:5432/dbname` and `jdbc:postgresql://host:5432/dbname` are supported.
+- The backend also accepts `SPRING_DATASOURCE_URL`, `JDBC_DATABASE_URL`, `POSTGRES_URL`, or `DATABASE_PRIVATE_URL` if your host uses one of those names.
 - If using a JDBC URL without embedded credentials, set `DATABASE_USERNAME` and `DATABASE_PASSWORD`.
 - Set `CORS_ALLOWED_ORIGINS` to your Vercel frontend URL
 

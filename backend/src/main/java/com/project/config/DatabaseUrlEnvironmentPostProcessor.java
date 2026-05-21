@@ -11,16 +11,10 @@ public class DatabaseUrlEnvironmentPostProcessor implements EnvironmentPostProce
 
     @Override
     public void postProcessEnvironment(ConfigurableEnvironment environment, SpringApplication application) {
-        if (environment.getProperty("SPRING_DATASOURCE_URL") != null) {
+        Map<String, Object> properties = DatabaseUrlProperties.fromEnv(environment::getProperty);
+        if (properties.isEmpty()) {
             return;
         }
-
-        String databaseUrl = environment.getProperty("DATABASE_URL");
-        if (databaseUrl == null || databaseUrl.isBlank()) {
-            return;
-        }
-
-        Map<String, Object> properties = DatabaseUrlProperties.from(databaseUrl);
 
         environment.getPropertySources().addFirst(new MapPropertySource(PROPERTY_SOURCE_NAME, properties));
     }
