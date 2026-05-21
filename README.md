@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Prowider Mini Lead Distribution System
 
 Production-oriented full-stack lead allocation system with Spring Boot 3, PostgreSQL, Flyway, Next.js 15, Axios, SockJS, and STOMP.
@@ -75,9 +74,8 @@ Backend on Render:
 
 - Build command: `cd backend && mvn clean package -DskipTests`
 - Start command: `java -jar backend/target/prowider-backend-0.0.1-SNAPSHOT.jar`
-- Set `DATABASE_URL` to a JDBC PostgreSQL URL, for example `jdbc:postgresql://host:5432/dbname`
-- Set `DATABASE_USERNAME`
-- Set `DATABASE_PASSWORD`
+- Set `DATABASE_URL` to your Render/Postgres internal database URL. Both `postgres://user:password@host:5432/dbname` and `jdbc:postgresql://host:5432/dbname` are supported.
+- If using a JDBC URL without embedded credentials, set `DATABASE_USERNAME` and `DATABASE_PASSWORD`.
 - Set `CORS_ALLOWED_ORIGINS` to your Vercel frontend URL
 
 Frontend on Vercel:
@@ -95,6 +93,3 @@ Database on Neon or Supabase:
 ## Notes
 
 The test endpoint intentionally creates leads concurrently to exercise locking. The quota reset webhook is idempotent: repeating the same `event_id` records only one effect.
-=======
-# lead-distribution-system
->>>>>>> e04d5471fa992098ed7cbf148036357e9c44ab2d
